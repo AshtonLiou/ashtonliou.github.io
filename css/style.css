@@ -1,0 +1,96 @@
+[data-theme="light"] {
+    --root-color: #212121;
+    --root-secondary-color: #d3d3d3;
+    --root-background-color: #e8e8e8;
+}
+
+[data-theme="dark"] {
+    --root-color: #e8e8e8;
+    --root-secondary-color: #2e2e2e;
+    --root-background-color: #212121;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+html,
+body {
+    color: var(--root-color);
+    background-color: var(--root-background-color);
+    font-family: "Roboto", serif;
+    transition: background-color .2s, color .2s;
+}
+
+#navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 10vh;
+    width: 4em;
+    height: 80vh;
+    border-radius: 0 20px 20px 0;
+    background-color: color-mix(in srgb, var(--root-color) 40%, var(--root-background-color) 60%);
+    transition: all .2s;
+
+    &>#theme-switch {
+        display: none;
+
+        &+label {
+            position: relative;
+            display: block;
+            text-align: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            color: var(--root-background-color);
+            border-radius: 50%;
+            background-color: var(--root-color);
+            transition: all .2s ease-in-out;
+            overflow: hidden;
+            cursor: pointer;
+
+            &::before {
+                content: "\2600";
+                position: absolute;
+                top: 44%;
+                left: 50%;
+                font-size: 2em;
+                transform: translate(-50%, -50%);
+                transition: all .3s ease-in-out;
+            }
+
+            &::after {
+                content: "\262A";
+                position: absolute;
+                top: 100%;
+                left: 100%;
+                font-size: 2em;
+                transform: translate(0, -50%);
+                transition: all .3s ease-in-out;
+            }
+
+            &:hover {
+                box-shadow: 0 0 0 .5em var(--root-secondary-color);
+            }
+        }
+
+        &:checked+label {
+            &::before {
+                top: 100%;
+                left: 0;
+                transform: translate(-100%, -50%);
+            }
+
+            &::after {
+                top: 44%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}

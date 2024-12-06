@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./image/logo.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript">
+        localStorage.setItem("theme", localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+        document.querySelector("html").setAttribute("data-theme", localStorage.getItem("theme"));
+    </script>
+    <script src="./js/main.js"></script>
+    <noscript>
+        <style>
+            body>*:not(#noscript) {
+                display: none;
+            }
+
+            #noscript {
+                position: fixed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh;
+                font-family: "微軟正黑體";
+                text-align: center;
+                background-color: #e8e8e8;
+
+                &>a {
+                    padding: .5rem;
+                    color: gray;
+                    text-decoration: none;
+                    border-radius: 10px;
+                    transition: all .2s ease-in-out;
+
+                    &:hover {
+                        background-color: lightgray;
+                    }
+                }
+            }
+        </style>
+        <div id="noscript" data-translate="noscript">
+            <h2 aria-label="此網站需要啟用 JavaScript">此網站需要啟用 JavaScript</h2>
+            <a href="https://support.google.com/admanager/answer/12654?hl=zh-Hant" aria-label="開啟 JavaScript 設定"
+                title="開啟 JavaScript 設定" target="_blank">開啟 JavaScript 設定</a>
+        </div>
+    </noscript>
+    <title>Ashton Style Blog</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <input type="checkbox" name="theme-switch" id="theme-switch" aria-label="切換成淺色/深色模式">
+        <label for="theme-switch"></label>
+    </nav>
+</body>
+
+</html>

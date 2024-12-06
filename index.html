@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./image/logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="./image/logo_favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -57,10 +57,32 @@
 </head>
 
 <body>
-    <nav id="navbar">
+    <nav>
         <input type="checkbox" name="theme-switch" id="theme-switch" aria-label="切換成淺色/深色模式">
         <label for="theme-switch"></label>
     </nav>
+    <header>
+        <div>
+            <img src="./image/logo.jpg" alt="Ashton Style Blog Logo，這是 Ashton 的個人標誌" draggable="false">
+            <svg viewBox="0 0 280 280" role="img" aria-labelledby="avatar-svg-title avatar-svg-description">
+                <title id="avatar-svg-title">從創意到實現 · 設計與代碼之間的魔術師</title>
+                <desc id="avatar-svg-description">Ashton 的標誌性環形文字設計</desc>
+                <defs>
+                    <path id="avatar-text-path" d="
+                        M 140, 140 
+                        m -120, 0
+                        a 120,120 0 1,1 240,0
+                        a 120,120 0 1,1 -240,0">
+                    </path>
+                </defs>
+                <text dy="-5">
+                    <textPath href="#avatar-text-path">
+                        從創意到實現 · 設計與代碼之間的魔術師 - Ashton
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+    </header>
 </body>
 
 </html>

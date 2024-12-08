@@ -76,7 +76,8 @@ html,
 body {
     color: var(--primary-color);
     background-color: var(--primary-complementary-color);
-    font-family: "Roboto", serif;
+    font-family: "Roboto", serif, sans-serif;
+    font-feature-settings: "liga" 0;
     transition: background-color .2s ease-in-out, color .2s ease-in-out;
     scroll-behavior: smooth;
     height: 200vh;
@@ -113,7 +114,7 @@ nav {
         cursor: pointer;
 
         &::before {
-            content: "☀";
+            content: "\2600";
             position: absolute;
             top: 44%;
             left: 50%;
@@ -123,7 +124,7 @@ nav {
         }
 
         &::after {
-            content: "☪";
+            content: "\262A";
             position: absolute;
             top: 100%;
             left: 100%;
@@ -194,7 +195,6 @@ header {
             flex-direction: column;
             padding: 1em;
             color: var(--complementary-secondary-color);
-            font-size: 1.2em;
             font-weight: 700;
             text-align: center;
             white-space: pre;
@@ -202,11 +202,13 @@ header {
             transform: rotateY(180deg);
 
             &>h3 {
-                margin-bottom: .5rem;
+                font-size: clamp(1rem, 2vw, 1.5rem);
+                margin-bottom: .25rem;
             }
 
             &>ul>li {
                 list-style-type: square;
+                font-size: clamp(1rem, 2vw, 1.5rem);
             }
         }
     }

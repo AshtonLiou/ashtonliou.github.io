@@ -14,11 +14,21 @@
 
 @keyframes rotate-text {
     from {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes quick-rotate-text {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(-360deg);
     }
 }
 
@@ -44,13 +54,53 @@
     }
 }
 
+@keyframes rotateX {
+    from {
+        transform: rotateX(0);
+    }
+
+    to {
+        transform: rotateX(360deg);
+    }
+}
+
+@keyframes rotateY {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(720deg);
+    }
+}
+
 @keyframes scroll-marquee-left {
     to {
         transform: translateX(calc(-100% - var(--gap)));
     }
 }
 
+@keyframes quick-scroll-marquee-left {
+    from {
+        transform: translateX(calc(100% - var(--gap)));
+    }
+
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
 @keyframes scroll-marquee-right {
+    to {
+        transform: translateX(calc(100% + var(--gap)));
+    }
+}
+
+@keyframes quick-scroll-marquee-right {
+    from {
+        transform: translateX(calc(-100% + var(--gap)));
+    }
+
     to {
         transform: translateX(calc(100% + var(--gap)));
     }
@@ -74,27 +124,22 @@
 
 html,
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: var(--primary-color);
-    background-color: var(--primary-complementary-color);
     font-family: "Roboto", serif, "Courier New", monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: "liga" 0;
+    background-color: var(--primary-complementary-color);
     transition: background-color .2s ease-in-out, color .2s ease-in-out;
+    overflow-x: hidden;
     scroll-behavior: smooth;
-    height: 200vh;
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     position: fixed;
-    top: 10vh;
-    width: 4em;
-    height: 80vh;
-    border-radius: 0 20px 20px 0;
-    background-color: color-mix(in srgb, var(--primary-color) 40%, var(--primary-complementary-color) 60%);
-    transition: all .2s ease-in-out;
+    top: .5em;
+    left: .5em;
 }
 
 #theme-switch {
@@ -158,7 +203,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 3em;
+    padding-top: 3em;
 }
 
 #avatar-wrapper {
@@ -175,6 +220,7 @@ header {
         height: 100%;
         transform-style: preserve-3d;
         transition: all .5s ease-in-out;
+        animation: rotateY 2s cubic-bezier(.3, 1.5, .6, 1);
         z-index: 100;
 
         &>img,
@@ -218,12 +264,13 @@ header {
         width: 120%;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
-        animation: rotate-text 60s ease-in-out infinite;
+        animation: rotate-text 60s 2s ease-in-out infinite,
+            quick-rotate-text 2s cubic-bezier(.3, 1.5, .6, 1);
 
         & text {
             fill: var(--complementary-secondary-color);
             font-weight: 900;
-            letter-spacing: 0.1rem;
+            letter-spacing: .1rem;
             transition: all .2s ease-in-out;
         }
     }
@@ -279,6 +326,57 @@ header {
     }
 }
 
+#social-media-section {
+    width: 15em;
+    background-color: #d3d3d3;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &>a {
+        position: relative;
+        width: clamp(2em, 25%, 4em);
+        color: #e8e8e8;
+
+        &::before {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            padding: .5rem 1rem;
+            border-radius: 5px;
+            color: var(--root-background-color);
+            background-color: gray;
+            transform: translateX(-50%) scale(0);
+            transition: all .2s ease-in-out;
+            z-index: 200;
+        }
+
+        &:nth-child(1)::before {
+            content: "Facebook";
+        }
+
+        &:nth-child(2)::before {
+            content: "Instagram";
+        }
+
+        &:nth-child(3)::before {
+            content: "Github";
+        }
+
+        &:hover::before {
+            transform: translateX(-50%) scale(1);
+        }
+
+        &>img {
+            width: 100%;
+            animation: rotateX 2s cubic-bezier(.3, 1.5, .6, 1);
+        }
+    }
+}
+
 .skill-marquee {
     display: flex;
     --gap: 1em;
@@ -318,13 +416,32 @@ header {
 }
 
 #basic-skill-marquee>ul {
-    animation: scroll-marquee-left 30s linear infinite;
+    animation: scroll-marquee-left 30s 2s linear infinite,
+        quick-scroll-marquee-left 2s cubic-bezier(.3, 1.5, .6, 1);
 }
 
 #advanced-skill-marquee {
     justify-content: end;
 
     &>ul {
-        animation: scroll-marquee-right 30s linear infinite;
+        animation: scroll-marquee-right 30s 2s linear infinite,
+            quick-scroll-marquee-right 2s cubic-bezier(.3, 1.5, .6, 1);
     }
+}
+
+main {
+    flex: 1;
+    margin: 1em;
+
+    &>h1 {
+        font-weight: 900;
+        text-align: center;
+    }
+}
+
+footer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

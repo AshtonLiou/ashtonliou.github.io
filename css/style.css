@@ -113,7 +113,7 @@ nav {
         cursor: pointer;
 
         &::before {
-            content: "\2600";
+            content: "☀";
             position: absolute;
             top: 44%;
             left: 50%;
@@ -123,7 +123,7 @@ nav {
         }
 
         &::after {
-            content: "\262A";
+            content: "☪";
             position: absolute;
             top: 100%;
             left: 100%;

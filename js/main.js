@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("%c停止你的動作!%c\n這是專門提供給開發人員的瀏覽器功能\n請勿複製貼上可疑的程式碼\nΣ(っ °Д °;)っ", "color: red; font-size: 4em; font-weight: 900;", "color: yellow; font-size: 2em; font-weight: 900;");
+    console.log("%c停止你的動作! %c這是專門提供給開發人員的瀏覽器功能\n請勿複製貼上可疑的程式碼\nΣ(っ °Д °;)っ",
+        "color: red; font-size: 4em; font-weight: 900;",
+        "color: yellow; font-size: 2em; font-weight: 900;"
+    );
     const themeSwitch = document.getElementById("theme-switch");
-    const avatar = document.querySelector("#avatar-wrapper>div");
-    const skillText = document.querySelector("#avatar-wrapper>div>div>ul");
-    const skillTitle = document.querySelector("#avatar-wrapper>div>div>h3");
+    const avatar = document.getElementById("avatar");
+    const skillTitle = document.getElementById("skill-title");
+    const skillText = document.getElementById("skill-text");
     const skill = {
         "HTML": ["SEO優化", "靈活排版", "語意標籤", "結構化設計", "無障礙設計"],
         "CSS": ["美觀製作", "動畫製作", "多樣布局", "響應式設計", "客製化設計"],
@@ -22,16 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
         "MYSQL": ["資料存取", "複雜查詢", "資料優化", "多表操作", "資料庫設計"],
         "GIT": ["版本控制", "代碼備份", "分支管理", "合併衝突", "協作整合"]
     };
-    themeSwitch.checked = localStorage.getItem("theme") == "light" ? false : true;
+    themeSwitch.checked = localStorage.getItem("theme") === "dark";
     themeSwitch.onchange = () => {
-        let newTheme = themeSwitch.checked ? "dark" : "light";
+        const newTheme = themeSwitch.checked ? "dark" : "light";
         document.querySelector("html").setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
     };
     let isClickable = true;
-    let rotationAngle = 0;
+    let rotationAngle = parseInt(avatar.style.transform.replace(/[^-\d]/g, "")) || 0;
     document.querySelectorAll(".skill-marquee>ul>li").forEach(skillButton => {
         skillButton.onclick = () => {
+            if (!isClickable) return;
+            isClickable = false;
             const updateAvatar = (button) => {
                 skillTitle.textContent = button.textContent;
                 skillText.replaceChildren();
@@ -43,9 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 rotationAngle += 180;
                 avatar.style.transform = `rotateY(${rotationAngle}deg)`;
             };
-            if (!isClickable) return;
-            isClickable = false;
-            if (!avatar.style.transform || parseInt(avatar.style.transform.replace(/[^-\d]/g, "")) % 360 === 0) {
+            let currentAngle = parseInt(avatar.style.transform.replace(/[^-\d]/g, "")) || 0;
+            if (currentAngle % 360 === 0) {
                 updateAvatar(skillButton);
                 setTimeout(() => isClickable = true, 500);
             } else {
@@ -55,14 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     updateAvatar(skillButton);
                     setTimeout(() => isClickable = true, 500);
                 }, 500);
-            };
+            }
         };
     });
     document.onclick = (event) => {
-        if (!isClickable || document.getElementById("avatar-wrapper").contains(event.target) || event.target.closest(".skill-marquee>ul>li")) return;
+        if (!isClickable) return;
+        if (document.getElementById("avatar-wrapper").contains(event.target)) return;
+        if (event.target.closest(".skill-marquee>ul>li")) return;
         if (rotationAngle % 360 === 180) {
             rotationAngle += 180;
             avatar.style.transform = `rotateY(${rotationAngle}deg)`;
-        };
+        }
     };
 });

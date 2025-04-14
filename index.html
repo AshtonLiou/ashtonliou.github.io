@@ -78,6 +78,22 @@
 </head>
 
 <body>
+    <div class="to-top hide" onclick="scrollToTop()">
+        <div class="text">
+            <span>Back</span>
+            <span>to</span>
+            <span>top</span>
+        </div>
+        <div class="clone">
+            <span>Back</span>
+            <span>to</span>
+            <span>top</span>
+        </div>
+        <svg stroke-width="2" stroke="var(--primary-color)" viewBox="0 0 24 24" fill="none" class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg" width="20px">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
+        </svg>
+    </div>
     <nav>
         <input type="checkbox" id="theme-switch" aria-label="切換主題">
         <label for="theme-switch"></label>
@@ -173,6 +189,97 @@
     </header>
     <main>
         <h1>PORTFOLIO</h1>
+        <div class="tabs">
+            <input type="radio" id="radio-1" name="tabs" checked="">
+            <label class="tab" for="radio-1">專案合作</label>
+            <input type="radio" id="radio-2" name="tabs">
+            <label class="tab" for="radio-2">技能競賽</label>
+            <input type="radio" id="radio-3" name="tabs">
+            <label class="tab" for="radio-3">元件設計</label>
+            <span class="glider"></span>
+        </div>
+        <section class="container">
+            <section class="case show">
+                <a href="https://echolyc.com/" target="_blank">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="./image/echolyc.com_index_after.png" alt="echolyc 首頁">
+                            <div class="tools">
+                                <span>Vue</span>
+                                <span>Tailwind</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-logo">
+                                <img src="./image/lyc_logo.svg" alt="echolyc logo">
+                            </div>
+                            <div class="card-introduce">
+                                <h4>奕訊智慧科技</h4>
+                                <p>-- 網站設計重塑 / 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="nsc hide">
+                <a href="https://ashtonliou.github.io/Junior_NSC_Regional_Web_Technology_52th/Module_02/home.html"
+                    target="_blank">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="./image/Junior-NSC-Regional-Web-Technology-52th-Module-02-home.png"
+                                alt="Junior-NSC-Regional-Web-Technology-52th-Module-02-home">
+                            <div class="tools">
+                                <span>Bootstrap</span>
+                                <span>JQuery</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-logo">
+                                <img src="./image/Floriade_LOGO.webp" alt="Floriade_LOGO">
+                            </div>
+                            <div class="card-introduce">
+                                <h4>第52屆全國技能競賽分區賽</h4>
+                                <p>-- 網站製作 / 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="ui hide">
+                <a href="https://uiverse.io/AshtonLiou/happy-donkey-10" target="_blank">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="./image/ui-design-1.png" alt="ui-design-1">
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-logo">
+                                <img src="./image/uiverse-logo.jpg" alt="uiverse logo" style="border-radius: 10px;">
+                            </div>
+                            <div class="card-introduce">
+                                <h4>AI Input Challenges</h4>
+                                <p>-- 元件製作 / 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://uiverse.io/AshtonLiou/tricky-deer-95" target="_blank">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="./image/ui-design-2.png" alt="ui-design-2">
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-logo">
+                                <img src="./image/uiverse-logo.jpg" alt="uiverse logo" style="border-radius: 10px;">
+                            </div>
+                            <div class="card-introduce">
+                                <h4>Button Mastery 7 Challenges</h4>
+                                <p>-- 元件製作 / 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </section>
     </main>
     <footer>
         <svg viewBox="0 0 1000 200" aria-label="頁尾">

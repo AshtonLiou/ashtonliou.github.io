@@ -71,4 +71,34 @@ document.addEventListener("DOMContentLoaded", () => {
             avatar.style.transform = `rotateY(${rotationAngle}deg)`;
         }
     };
+    document.querySelectorAll('input[name="tabs"]').forEach(radio => {
+        radio.addEventListener("change", () => {
+            document.querySelector(".case").classList.add("hide");
+            document.querySelector(".nsc").classList.add("hide");
+            document.querySelector(".ui").classList.add("hide");
+            if (radio.id === "radio-1") {
+                document.querySelector(".case").classList.remove("hide");
+                document.querySelector(".container").style.aspectRatio = "4 / 3.5";
+            } else if (radio.id === "radio-2") {
+                document.querySelector(".nsc").classList.remove("hide");
+                document.querySelector(".container").style.aspectRatio = "4 / 3.5";
+            } else if (radio.id === "radio-3") {
+                document.querySelector(".ui").classList.remove("hide");
+                document.querySelector(".container").style.aspectRatio = "4 / 7";
+            }
+        });
+    });
 });
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+        document.querySelector(".to-top").classList.remove("hide");
+    } else {
+        document.querySelector(".to-top").classList.add("hide");
+    }
+})
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}

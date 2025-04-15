@@ -78,13 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".ui").classList.add("hide");
             if (radio.id === "radio-1") {
                 document.querySelector(".case").classList.remove("hide");
-                document.querySelector(".container").style.aspectRatio = "4 / 3.5";
             } else if (radio.id === "radio-2") {
                 document.querySelector(".nsc").classList.remove("hide");
-                document.querySelector(".container").style.aspectRatio = "4 / 3.5";
             } else if (radio.id === "radio-3") {
                 document.querySelector(".ui").classList.remove("hide");
-                document.querySelector(".container").style.aspectRatio = "4 / 7";
             }
         });
     });

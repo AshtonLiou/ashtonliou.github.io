@@ -597,7 +597,7 @@ main {
   background-color: var(--neutral-color-1);
   border: 0.5rem solid var(--neutral-color-2);
   border-radius: 20px;
-  transition: all 1s cubic-bezier(0.3, 1.5, 0.6, 1);
+  transition: all 0.2s ease-in-out;
 
   &>img {
     width: 100%;
